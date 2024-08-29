@@ -34,16 +34,15 @@ public class StudentRepo {
 
     public List<Student> findAll() {
         String sql = "select * from student";
-        
-        RowMapper<Student> mapper = (rs, rowNum) -> {       //lambda expression
-                Student st = new Student();
-                st.setRollNo(rs.getInt("rollno"));
-                st.setName(rs.getString("name"));
-                st.setMarks(rs.getInt("marks"));
 
-                return st;
-        };
 
-        return jdbc.query(sql, mapper);
+        return jdbc.query(sql, (rs, rowNum) -> {       
+            Student st = new Student();
+            st.setRollNo(rs.getInt("rollno"));
+            st.setName(rs.getString("name"));
+            st.setMarks(rs.getInt("marks"));
+
+            return st;
+        });
     }
 }
