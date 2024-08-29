@@ -1,9 +1,12 @@
 package com.jason.SpringJDBCEx;
 
 import com.jason.SpringJDBCEx.model.Student;
+import com.jason.SpringJDBCEx.service.StudentService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+
+import java.util.List;
 
 @SpringBootApplication
 public class SpringJdbcExApplication {
@@ -14,13 +17,13 @@ public class SpringJdbcExApplication {
 		 st.setName("Mohit");
 		 st.setMarks(50);
 		 st.setRollNo(1);
-		 System.out.println(st.toString());
 
-		 Student s = context.getBean(Student.class);
-		s.setName("Sohit");
-		s.setMarks(40);
-		s.setRollNo(2);
-		System.out.println(s.toString());
+		StudentService service = context.getBean(StudentService.class);
+
+		 service.addStudent(st);
+
+		List<Student> students = service.getStudents();
+		System.out.println(students);
 	}
 
 }
