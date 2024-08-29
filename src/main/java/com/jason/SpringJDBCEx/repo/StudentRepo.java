@@ -10,7 +10,7 @@ import java.util.List;
 public class StudentRepo {
 
     public void save(Student st) {
-
+        System.out.println("Added");
     }
 
     public List<Student> findAll() {
