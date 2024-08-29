@@ -15,6 +15,12 @@ public class SpringJdbcExApplication {
 		 st.setMarks(50);
 		 st.setRollNo(1);
 		 System.out.println(st.toString());
+
+		 Student s = context.getBean(Student.class);
+		s.setName("Sohit");
+		s.setMarks(40);
+		s.setRollNo(2);
+		System.out.println(s.toString());
 	}
 
 }
